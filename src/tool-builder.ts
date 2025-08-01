@@ -1,5 +1,4 @@
-
-import { tool, type Tool, type InferToolInput } from "ai";
+import { type Tool, type InferToolInput } from "ai";
 import { z } from "zod";
 
 class ToolBuilder<Input, Output, TContext extends z.ZodObject = z.ZodObject<{}>> {
@@ -85,10 +84,10 @@ class ToolBuilder<Input, Output, TContext extends z.ZodObject = z.ZodObject<{}>>
       }
 
       const actualConfig = this.toolConfig(ctx);
-      return tool(actualConfig);
+      return actualConfig;
     }
 
-    return tool(this.toolConfig);
+    return this.toolConfig;
   }
 }
 
